@@ -1,0 +1,35 @@
+import pandas as pd
+data = pd.read_csv('math_students.csv', delimiter=',')
+data.shape
+data.columns
+data.loc[:, data.columns[:-1]].head()
+data.drop(['G3'], axis=1).head()
+data.isnull().any().any()
+?pd.isnull()
+data['column'].fillna('smth', inplace = True)
+data.describe()
+data.info()
+data['guardian'].unique()
+data['guardian'].nunique()
+data['guardian'].value_counts()
+data[(data['guardian'] == 'mother') & ((data['Mjob'] == 'teacher') | (data['Mjob'] == 'at_home'))].shape
+data_by_school = data.groupby('school')
+data_by_school.describe()
+data_by_school.mean()
+data[data.type == 'one feature']['Pass'].mean()
+
+pd.get_dummies(df, columns = ['categorail columns'], drop_first = True)
+
+
+
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=13)
+
+
+
+
+from sklearn.tree import DecisionTreeClassifier
+dt = DecisionTreeClassifier(random_state=13)
+max_depth: максимальная глубина дерева
+min_samples_leaf: минимальное число объектов в вершине дерева, необходимое для того, чтобы она стала листовой
