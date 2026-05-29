@@ -18,6 +18,11 @@ data_by_school.describe()
 data_by_school.mean()
 data[data.type == 'one feature']['Pass'].mean()
 
+# Удалить тех, кто младше 18 ИЛИ живет в Кирове (оставляем противоположное)
+df = df[(df['Возраст'] >= 18) & (df['Город'] != 'Киров')]
+# Условие: если Возраст меньше 18, меняем Статус на 'ребенок'
+df.loc[df['Возраст'] < 18, 'Статус'] = 'ребенок'
+
 pd.get_dummies(df, columns = ['categorail columns'], drop_first = True)
 
 
